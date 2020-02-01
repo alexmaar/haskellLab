@@ -1,17 +1,12 @@
-absInt :: Int -> Int
-absInt x | x >= 0 = x
-	 | otherwise = -x
+roots :: (Double, Double, Double) -> (Double, Double)
+roots (a, b, c) = ((-b - d) / e , (-b + d) / e )
+	where d = sqrt ( b * b - 4 * a * c)
+	      e = 2 * a 
 
-sgn :: Int -> Int
-sgn x | x > 0 = 1
-      | x == 0 = 0
-      | otherwise = -1	
+unitVec2D :: (Double, Double) -> (Double, Double)
+unitVec2D (x, y) = (x / m , y / m ) 
+	where m = sqrt( x * x + y * y )
 
-min2Int :: (Int, Int) -> Int
-min2Int (x, y) | x<=y  = x
-	       | y<x  = y
-
-
-min3Int :: (Int, Int, Int) -> Int
-min3Int (x, y, z) | x<=min2Int(y,z)  = x
-		  | x > min2Int(y,z)  = min2Int(y,z)
+heron :: (Double, Double, Double) -> Double
+heron (a, b, c) = (sqrt(p * (p - a) * (p - b) * (p - c)))
+	where p = (a + b + c)/2

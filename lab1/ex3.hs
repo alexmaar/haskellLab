@@ -1,14 +1,17 @@
-sqr:: Double -> Double
-sqr x = x ^ 2
+absInt :: Int -> Int
+absInt x | x >= 0 = x
+	 | otherwise = -x
 
-lengthIn2D:: (Double, Double) -> Double
-lengthIn2D (x,y) = sqrt( x^2 + y^2 ) 
+sgn :: Int -> Int
+sgn x | x > 0 = 1
+      | x == 0 = 0
+      | otherwise = -1	
 
-lengthIn3D:: (Double, Double, Double) -> Double
-lengthIn3D (x,y,z) = sqrt(x^2 + y^2 + z^2)
+min2Int :: (Int, Int) -> Int
+min2Int (x, y) | x<=y  = x
+	       | y<x  = y
 
-swap:: (Int, Char) -> (Char, Int)
-swap (int, char) = (char, int)
 
-threeEqual::(Int, Int, Int) -> Bool
-threeEqual (x,y,z) = x == y && y == z
+min3Int :: (Int, Int, Int) -> Int
+min3Int (x, y, z) | x<=min2Int(y,z)  = x
+		  | x > min2Int(y,z)  = min2Int(y,z)
